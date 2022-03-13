@@ -3,23 +3,24 @@ using namespace std;
 
 const int mod = 1e9 + 7;
 int main() {
-  int n, sum;
-  cin >> n >> sum;
+  int n, target;
+  cin >> n >> target;
   int coins[n];
+  // target and first coin
+  int dp[target + 1];
   for (auto &c : coins)
-    cin >> c;	
-
-	int dp[sum+1][n+1];
-	dp[0][0] = 1 ;
-	for(int x = 1 ; x <= sum ; x++){
-		for(auto &c : coins){
-			if(x - c >= 0)
-				dp[x] = (dp[x] + dp[x-c])% mod ;
-		}
-	}
-	cout << dp[sum][n];
+    cin >> c;
+  // sort(coins , coins + n) ;
+  dp[0] = 1;
+  for (int i = 0; i < n; i++) {
+    for (int j = 1; j <= target; j++) {
+      if (j - coins[i] >= 0)
+        dp[j] = (dp[j] + dp[j - coins[i]]) % mod;
+    }
+  }
+  cout << dp[target] << "\n";
 }
 
 /**
- * state depends on previously choosen element and Sum 
+ * state depends on previously choosen element and Sum
  */
