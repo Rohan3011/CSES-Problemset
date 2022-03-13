@@ -14,10 +14,10 @@ int main() {
 	for(int x = 1 ; x <= sum ; x++){
 		for(auto &c : coins){
 			if(x - c >= 0)
-				(dp[x] += dp[x-c])%=mod ;
+				dp[x] = (dp[x] + dp[x-c])% mod ;
 		}
 	}
-	cout << dp[sum];
+	cout << dp[sum][n];
 }
 
 /**
