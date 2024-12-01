@@ -1,2 +1,2 @@
-# CSES-Problemset
-Trying to solve the problemset 
+# CSES Problemset
+Solutions to CSES problemset in `python` and `cpp`.
